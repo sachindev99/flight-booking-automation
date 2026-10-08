@@ -44,6 +44,14 @@ def given_user_flight_booking_locations(flight_booking_page,datatable):
 def user_selects_the_departure_date_and_number_of_passengers(flight_booking_page):
     flight_booking_page.select_departure_date_and_number_of_passengers()
 
+@given('user selects the return date')
+def user_selects_the_return_date(flight_booking_page):
+    flight_booking_page.select_return_date()
+
+@given('user selects the one way trip')
+def user_selects_the_one_way_trip(flight_booking_page):
+    flight_booking_page.select_one_way_trip()
+
 @given('user selects the travel class')
 def user_selects_the_travel_class(flight_booking_page):
     flight_booking_page.select_travel_class()
@@ -55,6 +63,14 @@ def user_clicks_the_search_flight_button(flight_booking_page):
 @when(parsers.parse('user selects a "{airline}" departure flight from the list'))
 def user_clicks_the_departure_flight_from_list(flight_booking_page,airline):
     flight_booking_page.select_departure_flight_from_list(airline)
+
+@when(parsers.parse('user selects a "{airline}" return flight from the list'))
+def user_clicks_the_return_flight_from_list(flight_booking_page,airline):
+    flight_booking_page.select_return_flight_from_list(airline)
+
+@when('proceed to the customer details page')
+def proceed_to_user_customer_details(flight_booking_page):
+    flight_booking_page.click_on_continue_to_passenger_details_button()
 
 @when('user enters passenger details')
 def enter_passenger_details(passenger_details_page):
