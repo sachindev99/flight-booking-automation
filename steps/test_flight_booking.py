@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 
@@ -48,6 +50,7 @@ def user_selects_the_departure_date_and_number_of_passengers(flight_booking_page
 def user_selects_the_return_date(flight_booking_page):
     flight_booking_page.select_return_date()
 
+@when('user selects the one way trip')
 @given('user selects the one way trip')
 def user_selects_the_one_way_trip(flight_booking_page):
     flight_booking_page.select_one_way_trip()
@@ -84,4 +87,17 @@ def enter_payment_details(payment_details_page):
 @then('booking should be confirmed')
 def booking_is_confirmed(booking_confirmation_page):
     booking_confirmation_page.get_booking_confirmation()
+
+@then('Return date field is not visible')
+def return_date_is_not_visible(flight_booking_page):
+    flight_booking_page.return_date_is_not_visible()
+
+@then('when user unticked the one way trip')
+def user_unticked_one_way_trip(flight_booking_page):
+    flight_booking_page.unticked_one_way_trip()
+
+@then('Return date field is visible')
+def return_date_is_visible(flight_booking_page):
+    flight_booking_page.return_date_is_visible()
+
 

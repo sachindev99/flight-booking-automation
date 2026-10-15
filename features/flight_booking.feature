@@ -28,3 +28,10 @@ Feature: Flight booking
     And user enters passenger details
     And user enters payment details
     Then booking should be confirmed
+
+  Scenario: Return date only for the round trip
+    Given user is on the flight booking site
+    When user selects the one way trip
+    Then Return date field is not visible
+    And when user unticked the one way trip
+    Then Return date field is visible
