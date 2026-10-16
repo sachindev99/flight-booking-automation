@@ -35,3 +35,19 @@ Feature: Flight booking
     Then Return date field is not visible
     And when user unticked the one way trip
     Then Return date field is visible
+
+  Scenario: validation errors appear on missing field
+    Given user is on the flight booking site
+    When search button is clicked by keeping from and to empty
+    Then the inline missing fields validation error is displayed
+
+  Scenario: same origin and destination validation
+    Given user is on the flight booking site
+    And user selects the From and To locations
+      | Sydney | Sydney |
+     And user selects the departure date and number of passengers
+    And user selects the return date
+    And user selects the travel class
+    When user clicks the search flight button
+    Then validation error displayed for searching identical cities
+

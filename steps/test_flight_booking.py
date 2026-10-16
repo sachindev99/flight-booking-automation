@@ -59,6 +59,8 @@ def user_selects_the_one_way_trip(flight_booking_page):
 def user_selects_the_travel_class(flight_booking_page):
     flight_booking_page.select_travel_class()
 
+@when('search button is clicked by keeping from and to empty')
+@when('user clicks the search flight button')
 @given('user clicks the search flight button')
 def user_clicks_the_search_flight_button(flight_booking_page):
     flight_booking_page.search_flight_button()
@@ -99,5 +101,14 @@ def user_unticked_one_way_trip(flight_booking_page):
 @then('Return date field is visible')
 def return_date_is_visible(flight_booking_page):
     flight_booking_page.return_date_is_visible()
+
+@then('the inline missing fields validation error is displayed')
+def inline_validation_error(flight_booking_page):
+    flight_booking_page.from_field_validation()
+
+@then('validation error displayed for searching identical cities')
+def validation_error_for_identical_cities(flight_booking_page):
+    flight_booking_page.validation_error_for_identical_cities()
+
 
 

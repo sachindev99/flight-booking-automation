@@ -1,3 +1,4 @@
+import time
 from datetime import date, timedelta
 
 from playwright.sync_api import Page, expect
@@ -65,6 +66,14 @@ class FlightBookingPage:
     def return_date_is_visible(self):
         expect(self.return_date).to_be_visible()
 
+    def from_field_validation(self):
+        expect(self.page.get_by_text('Please select a departure city.')).to_be_visible()
+
+    def to_field_validation(self):
+        expect(self.page.get_by_text('Please select a destination city.')).to_be_visible()
+
+    def validation_error_for_identical_cities(self):
+        expect(self.page.get_by_text('Departure and destination cities cannot be the same.')).to_be_visible()
 
 
 
