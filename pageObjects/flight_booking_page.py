@@ -75,6 +75,20 @@ class FlightBookingPage:
     def validation_error_for_identical_cities(self):
         expect(self.page.get_by_text('Departure and destination cities cannot be the same.')).to_be_visible()
 
+    def select_price_high_to_low(self):
+        self.page.get_by_test_id('flight-sort').select_option('Price: High to Low')
+
+    def flight_result_displayed_reorder(self):
+        number_of_flights = self.page.get_by_test_id('flight-departure-list').locator('.card-body').count()
+        print(f'number of flights',number_of_flights)
+        prices = self.page.locator('.h5.fw-bold.text-primary.mb-1').all_text_contents()
+        print(f'price',prices)
+
+        first_price = int(prices[0].replace('$', ''))
+        second_price = int(prices[1].replace('$', ''))
+
+        assert first_price >= second_price
+
 
 
 

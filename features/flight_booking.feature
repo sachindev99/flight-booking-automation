@@ -51,3 +51,15 @@ Feature: Flight booking
     When user clicks the search flight button
     Then validation error displayed for searching identical cities
 
+  Scenario: sort flight results by price high to low
+     Given user is on the flight booking site
+    And user selects the From and To locations
+      | Sydney | New York|
+    And user selects the departure date and number of passengers
+    And user selects the return date
+    And user selects the travel class
+    When user clicks the search flight button
+    And selects the price high to low from the sort by dropdown
+    Then flight result displayed re-order from most expensive to cheapest
+
+

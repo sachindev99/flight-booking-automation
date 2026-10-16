@@ -110,5 +110,14 @@ def inline_validation_error(flight_booking_page):
 def validation_error_for_identical_cities(flight_booking_page):
     flight_booking_page.validation_error_for_identical_cities()
 
+@when('selects the price high to low from the sort by dropdown')
+def select_price_high_to_low(flight_booking_page):
+    flight_booking_page.select_price_high_to_low()
+
+@then('flight result displayed re-order from most expensive to cheapest')
+def flight_result_displayed_reorder(flight_booking_page):
+    flight_booking_page.flight_result_displayed_reorder()
+
+
 
 
